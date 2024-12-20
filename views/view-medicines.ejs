@@ -1,0 +1,75 @@
+<%- include("./header.ejs") %>
+  <%- include("./navbar.ejs") %>
+  <% if(adminID){ %>
+  <li class="nav-item"><a href="/add-medicine" class="nav-link">Add Medicine</a></li>
+  <% } %>
+  </ul>
+  <% if(adminID){ %>
+  <a href="/admin/logout" class="btn btn-danger float-end">Logout</a>
+  <% } %>
+  </div>
+  </div>
+  </nav>
+  <div class="main p-3">
+    <h1 class="text-center"><%= pageTitle %></h1>
+    <div class="d-flex flex-row justify-content-between align-items-center py-2">
+      <h4 class="h4"><%= medicines.length %> records found</h4>
+        <form action="/medicines" method="post" class="row g-2 align-items-center">
+          <div class="col-auto">
+            <input type="search" name="mbno" id="mbno" class="form-control" placeholder="Enter batch no. here...">
+          </div>
+          <div class="col-auto">
+            <button type="submit" class="btn btn-primary">Search</button>
+          </div>
+        </form>
+    </div>
+    <div class="w-100">
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>Batch No.</th>
+            <th>Name</th>
+            <th>Manufacturer</th>
+            <th>Price (Rs.)</th>
+            <th>Qty</th>
+            <% if(adminID){ %>
+              <th></th>
+              <th></th>
+            <% } %>
+          </tr>
+        </thead>
+        <tbody>
+          <% if(medicines.length > 0){ %>
+            <% for(let med of medicines){ %>
+              <tr>
+                <td><%= med.mbno %></td>
+                <td><%= med.mname %></td>
+                <td><%= med.mmanufacturer %></td>
+                <td><%= med.mprice %></td>
+                <td><%= med.mqty %></td>
+                <% if(adminID){ %>
+                  <td><a href="/edit-medicine/<%= med.mbno %>" class="btn btn-sm btn-warning">Edit</a></td>
+                  <td>
+                    <form action="/delete-medicine" method="post">
+                      <input type="hidden" name="mid" value="<%= med._id %>">
+                      <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+                    </form>
+                  </td>
+                <% } %>
+              </tr>
+            <% } %>
+          <% }else{ %>
+            <tr>
+              <td>No medicine was found...</td>
+            </tr>
+          <% } %>
+        </tbody>
+      </table>
+    </div>
+    <div class="w-100 py-2">
+      <% if(adminID){ %>
+        <a href="/add-medicine" class="btn btn-warning">Add More</a>
+      <% } %>
+    </div>
+  </div>
+<%- include("./footer.ejs") %>

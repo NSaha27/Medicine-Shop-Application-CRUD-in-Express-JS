@@ -1,0 +1,57 @@
+<%- include("./header.ejs") %>
+  <%- include("./navbar.ejs") %>
+  <li class="nav-item">
+    <a class="nav-link" href="/medicines">Medicines</a>
+  </li>
+  </ul>
+  </div>
+  </div>
+  </nav>
+  <div class="main p-3 d-flex">
+    <div class="regForm w-75 p-2">
+      <h2 class="h2 mb-2"><%= pageTitle %></h2>
+      <form action="/admin/registration" method="post" class="row g-3 mb-3">
+        <div class="col-12">
+          <label for="inputID" class="form-label">User ID</label>
+          <input type="text" name="id" class="form-control" id="inputID" placeholder="ex. JOHNDOE29">
+        </div>
+        <div class="col-12">
+          <label for="inputName" class="form-label">Name</label>
+          <input type="text" name="name" class="form-control" id="inputName" placeholder="ex. John Doe">
+        </div>
+        <div class="col-12">
+          <label for="inputSsn" class="form-label">SSN</label>
+          <input type="text" name="ssn" class="form-control" id="inputSsn" placeholder="ex. 1234 5678 9012">
+        </div>
+        <div class="col-12">
+          <label for="inputPhone" class="form-label">Phone</label>
+          <input type="text" name="phone" class="form-control" id="inputPhone" placeholder="ex. +919831532100">
+        </div>
+        <div class="col-12">
+          <label for="inputEmail4" class="form-label">Email</label>
+          <input type="email" name="email" class="form-control" id="inputEmail4">
+        </div>
+        <div class="col-12">
+          <label for="inputPassword4" class="form-label">Password</label>
+          <input type="password" name="password" class="form-control" id="inputPassword4">
+        </div>
+        <div class="col-12">
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" name="isAgreedToTerms" id="gridCheck">
+            <label class="form-check-label" for="gridCheck">
+              I agree to the <a href="#">terms and conditions</a>
+            </label>
+          </div>
+        </div>
+        <div class="col-12">
+          <button type="submit" class="btn btn-success">Sign up</button>
+          <button type="reset" class="btn btn-danger">Cancel</button>
+        </div>
+      </form>
+      <hr>
+      <div class="">
+        <p>already registered? <a href="/admin/login">login here</a></p>
+      </div>
+    </div>
+  </div>
+<%- include("./footer.ejs") %>

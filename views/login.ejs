@@ -1,0 +1,33 @@
+<%- include("./header.ejs") %>
+  <%- include("./navbar.ejs") %>
+  <li class="nav-item">
+    <a class="nav-link" href="/medicines">Medicines</a>
+  </li>
+  </ul>
+  </div>
+  </div>
+  </nav>
+  <div class="main p-3 d-flex">
+    <div class="regForm w-75 p-2">
+      <h2 class="h2 mb-2"><%= pageTitle %></h2>
+      <form action="/admin/login" method="post" class="row g-3 mb-3">
+        <div class="col-12">
+          <label for="inputID" class="form-label">User ID</label>
+          <input type="text" name="id" class="form-control" id="inputID" placeholder="ex. JOHNDOE29">
+        </div>
+        <div class="col-12">
+          <label for="inputPassword4" class="form-label">password</label>
+          <input type="password" name="password" class="form-control" id="inputPassword4">
+        </div>
+        <div class="col-12">
+          <button type="submit" class="btn btn-success">Sign in</button>
+          <button type="reset" class="btn btn-danger">Cancel</button>
+        </div>
+      </form>
+      <hr>
+      <div class="">
+        <p>not yet registered? <a href="/admin/registration">click here</a></p>
+      </div>
+    </div>
+  </div>
+<%- include("./footer.ejs") %>
